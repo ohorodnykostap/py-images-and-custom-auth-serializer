@@ -33,9 +33,10 @@ class AuthTokenSerializer(serializers.Serializer):
 
         user = authenticate(
             request=self.context.get("request"),
-            email=email,
-            password=password
+            username=email,
+            password=password,
         )
+
         if not user:
             raise serializers.ValidationError(
                 "Unable to authenticate with provided credentials",
